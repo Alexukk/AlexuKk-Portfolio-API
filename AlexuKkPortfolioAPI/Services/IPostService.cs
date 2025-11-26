@@ -9,5 +9,6 @@ namespace AlexuKkPortfolioAPI.Services
         Task<GetPostDTO?> GetPostByIdAsync(int id);
         Task<bool> DeletePostAsync(int id);
         Task<GetPostDTO> UpdatePostAsync(int id, UpdatePostDTO dto);
+        Task<GetPostDTO> UpdateStatusAsync(int id, UpdateStatusDTO status);
     }
 }

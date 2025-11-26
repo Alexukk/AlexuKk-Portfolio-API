@@ -67,5 +67,20 @@ namespace AlexuKkPortfolioAPI.Services
             await context.SaveChangesAsync();
             return post.ToGetPostDTO();
         }
+
+        public async Task<GetPostDTO?> UpdateStatusAsync(int id, UpdateStatusDTO status)
+        {
+            var post = await context.Posts.Where(p => p.Id == id).FirstOrDefaultAsync();
+            if (post is null)
+            {
+                return null;
+            }
+
+            post.Status = status.Status;
+            post.UpdatedAt = DateTime.UtcNow;
+            await context.SaveChangesAsync();
+            return post.ToGetPostDTO();
+
+        }
     }
 }

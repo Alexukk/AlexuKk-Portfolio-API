@@ -67,5 +67,21 @@ namespace AlexuKkPortfolioAPI.Controllers
             }
             return Ok(updatedPost);
         }
+
+
+        [HttpPatch("{id}/status")]
+        public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateStatusDTO status)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var updatedPost = await postService.UpdateStatusAsync(id, status);
+            if (updatedPost is null)
+            {
+                return NotFound($"No such post with id {id}");
+            }
+            return Ok(updatedPost);
+        }
     }
 }
