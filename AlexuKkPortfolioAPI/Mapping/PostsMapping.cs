@@ -17,5 +17,18 @@ namespace AlexuKkPortfolioAPI.Mapping
                 UpdatedAt = post.UpdatedAt
             };
         }
+
+        public static Post ToEntity(this CreatePostDTO dto)
+        {
+            return new Post
+            {
+                Title = dto.Title,
+                Content = dto.Content,
+                Status = dto.Status,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = null
+            };
+        }
+
     }
 }

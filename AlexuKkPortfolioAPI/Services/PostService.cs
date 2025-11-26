@@ -8,9 +8,17 @@ namespace AlexuKkPortfolioAPI.Services
 {
     public class PostService(AppDBContext context) : IPostService
     {
-        public Task<GetPostDTO> CreatePostAsync(CreatePostDTO dto)
+        public async Task<GetPostDTO?> CreatePostAsync(CreatePostDTO dto)
         {
-            throw new NotImplementedException();
+            if (dto is null)
+            {
+                return null;
+            }
+            var post = dto.ToEntity();
+            await context.Posts.AddAsync(post);
+            await context.SaveChangesAsync();
+            return post.ToGetPostDTO();
+
         }
 
         public Task<bool> DeletePostAsync(int id)

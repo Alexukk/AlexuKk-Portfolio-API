@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AlexuKkPortfolioAPI.Services;
+using AlexuKkPortfolioAPI.DTOs;
 
 namespace AlexuKkPortfolioAPI.Controllers
 {
@@ -26,5 +27,21 @@ namespace AlexuKkPortfolioAPI.Controllers
             }
             return Ok(post);
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePost ([FromBody] CreatePostDTO dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var createdPost = await postService.CreatePostAsync(dto);
+
+            
+            return CreatedAtAction(nameof(GetPostById), new { id = createdPost.Id }, createdPost);
+        }
+
     }
 }
