@@ -38,10 +38,34 @@ namespace AlexuKkPortfolioAPI.Controllers
             }
 
             var createdPost = await postService.CreatePostAsync(dto);
-
-            
             return CreatedAtAction(nameof(GetPostById), new { id = createdPost.Id }, createdPost);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            var result = await postService.DeletePostAsync(id);
+            if (!result)
+            {
+                return NotFound("Post with this id doesn't exist");
+            }
+            return NoContent();
+        }
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdatePost(int id, [FromBody] UpdatePostDTO dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var updatedPost = await postService.UpdatePostAsync(id, dto);
+            if (updatedPost is null)
+            {
+                return NotFound($"No such post with id {id}");
+            }
+            return Ok(updatedPost);
+        }
     }
 }

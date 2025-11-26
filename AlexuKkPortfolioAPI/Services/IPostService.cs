@@ -8,5 +8,6 @@ namespace AlexuKkPortfolioAPI.Services
         Task<IEnumerable<GetPostDTO>> GetAllPostsAsync();
         Task<GetPostDTO?> GetPostByIdAsync(int id);
         Task<bool> DeletePostAsync(int id);
+        Task<GetPostDTO> UpdatePostAsync(int id, UpdatePostDTO dto);
     }
 }

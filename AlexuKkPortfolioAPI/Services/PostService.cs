@@ -21,9 +21,16 @@ namespace AlexuKkPortfolioAPI.Services
 
         }
 
-        public Task<bool> DeletePostAsync(int id)
+        public async Task<bool> DeletePostAsync(int id)
         {
-            throw new NotImplementedException();
+            var post = await context.Posts.Where(p => p.Id == id).FirstOrDefaultAsync();
+            if (post is null)
+            {
+                return true;
+            }
+            context.Posts.Remove(post);
+            await context.SaveChangesAsync();
+            return true;
         }
 
         public async Task<IEnumerable<GetPostDTO>> GetAllPostsAsync()
@@ -43,6 +50,22 @@ namespace AlexuKkPortfolioAPI.Services
                 return null;
             }
                 return post.ToGetPostDTO();
+        }
+
+        public async Task<GetPostDTO?> UpdatePostAsync(int id, UpdatePostDTO dto)
+        {
+            var post = await context.Posts.Where(p => p.Id == id).FirstOrDefaultAsync();
+            if (post is null)
+            {
+                return null;
+            }
+
+            post.Title = dto.Title;
+            post.Content = dto.Content;
+            post.Status = dto.Status;
+            post.UpdatedAt = DateTime.UtcNow;
+            await context.SaveChangesAsync();
+            return post.ToGetPostDTO();
         }
     }
 }
