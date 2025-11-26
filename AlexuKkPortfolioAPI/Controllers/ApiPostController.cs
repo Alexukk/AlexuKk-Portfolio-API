@@ -15,5 +15,16 @@ namespace AlexuKkPortfolioAPI.Controllers
            
             return Ok(posts);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPostById(int id)
+        {
+            var post = await postService.GetPostByIdAsync(id);
+            if (post is null)
+            {
+                return NotFound();
+            }
+            return Ok(post);
+        }
     }
 }

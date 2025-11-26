@@ -24,9 +24,17 @@ namespace AlexuKkPortfolioAPI.Services
             return posts;
         }
 
-        public async Task<GetPostDTO> GetPostByIdAsync(int id)
+        public async Task<GetPostDTO?> GetPostByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var post = await context.Posts
+                .Where(p => p.Id == id)
+                .FirstOrDefaultAsync();
+
+            if (post is null)
+            {
+                return null;
+            }
+                return post.ToGetPostDTO();
         }
     }
 }
