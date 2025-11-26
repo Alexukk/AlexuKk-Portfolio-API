@@ -1,0 +1,6 @@
+@AlexuKkPortfolioAPI_HostAddress = http://localhost:5255
+
+GET {{AlexuKkPortfolioAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
