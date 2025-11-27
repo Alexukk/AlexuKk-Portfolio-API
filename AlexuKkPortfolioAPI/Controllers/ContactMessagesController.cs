@@ -8,7 +8,14 @@ namespace AlexuKkPortfolioAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ContactMessagesController : ControllerBase
+    public class ContactMessagesController(IContactMessageService contactMessageService) : ControllerBase
     {
+        [HttpGet]
+        public async Task<IActionResult> GetAllMessages()
+        {
+            var messages = await contactMessageService.GetAllMessagesAsync();
+
+            return Ok(messages);
+        }
     }
 }
