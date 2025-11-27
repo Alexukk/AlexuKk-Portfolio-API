@@ -1,10 +1,13 @@
-﻿namespace AlexuKkPortfolioAPI.Mapping
+﻿using AlexuKkPortfolioAPI.DTOs;
+using AlexuKkPortfolioAPI.Entities;
+
+namespace AlexuKkPortfolioAPI.Mapping
 {
     public static class ContactMessageMapping
     {
-        public static DTOs.GetContactMessageDTO ToGetContactMessageDTO(this Entities.ContactMessage entity)
+        public static GetContactMessageDTO ToGetContactMessageDTO(this ContactMessage entity)
         {
-            return new DTOs.GetContactMessageDTO
+            return new GetContactMessageDTO
             {
                 Id = entity.Id,
                 FullName = entity.FullName,
@@ -18,5 +21,24 @@
                 IsRead =  entity.IsRead
             };
         }
+
+
+        public static ContactMessage ToEntity(this CreateContactMessageDTO dto)
+        {
+            return new ContactMessage
+            {
+                FullName = dto.FullName,
+                Content = dto.Content,
+                Subject = dto.Subject,
+                WayToContact = dto.WayToContact,
+                PhoneNumber = dto.PhoneNumber,
+                Email = dto.Email,
+                TelegramUsername = dto.TelegramUsername,
+                CreatedAt = DateTime.UtcNow,
+                IsRead = false
+
+            };
+        }
     }
+
 }

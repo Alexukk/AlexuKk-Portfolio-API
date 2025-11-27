@@ -8,9 +8,13 @@ namespace AlexuKkPortfolioAPI.Services
 {
     public class ContactMessageService(AppDBContext context) : IContactMessageService
     {
-        public Task<GetContactMessageDTO> CreateMessageAsync(CreateContactMessageDTO dto)
+        public async Task<GetContactMessageDTO> CreateMessageAsync(CreateContactMessageDTO dto)
         {
-            throw new NotImplementedException();
+            var newContactMessage = dto.ToEntity();
+
+            await context.ContactMessages.AddAsync(newContactMessage);
+            await context.SaveChangesAsync();
+            return newContactMessage.ToGetContactMessageDTO();
         }
 
         public Task<bool> DeleteMessageAsync(int id)

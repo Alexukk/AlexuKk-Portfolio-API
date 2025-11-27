@@ -29,5 +29,18 @@ namespace AlexuKkPortfolioAPI.Controllers
             }
             return Ok(message);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateContactMessage([FromBody] CreateContactMessageDTO message)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await contactMessageService.CreateMessageAsync(message);
+
+            return CreatedAtAction(nameof(GetMessageById), new { id = result.Id }, result);
+        }
     }
 }
