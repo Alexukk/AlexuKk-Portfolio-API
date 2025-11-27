@@ -49,5 +49,16 @@ namespace AlexuKkPortfolioAPI.Controllers
             bool result = await contactMessageService.DeleteMessageAsync(id);
             return NoContent();
         }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> ToggleIsReadAsyn(int id)
+        {
+            var message = await contactMessageService.ToggleIsReadAsync(id);
+            if (message == null)
+            {
+                return NotFound($"No such message with an Id {id}");
+            }
+            return Ok(message);
+        }
     }
 }

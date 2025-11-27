@@ -51,9 +51,16 @@ namespace AlexuKkPortfolioAPI.Services
             return message.ToGetContactMessageDTO();
         }
 
-        public Task<GetContactMessageDTO?> ToggleIsReadAsync(int id)
+        public async Task<GetContactMessageDTO?> ToggleIsReadAsync(int id)
         {
-            throw new NotImplementedException();
+            var message = await context.ContactMessages.FindAsync(id);
+            if (message == null)
+            {
+                return null;
+            }
+            message.IsRead = !message.IsRead;
+            await context.SaveChangesAsync();
+            return message.ToGetContactMessageDTO();
         }
     }
 }
