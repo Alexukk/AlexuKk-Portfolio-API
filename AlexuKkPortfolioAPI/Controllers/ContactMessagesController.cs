@@ -17,5 +17,17 @@ namespace AlexuKkPortfolioAPI.Controllers
 
             return Ok(messages);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetMessageById(int id)
+        {
+            var message = await contactMessageService.GetMessageByIdAsync(id);
+
+            if (message == null)
+            {
+                return NotFound($"No such message with an Id {id}");
+            }
+            return Ok(message);
+        }
     }
 }

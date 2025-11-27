@@ -27,9 +27,16 @@ namespace AlexuKkPortfolioAPI.Services
             return messages.Select(m => m.ToGetContactMessageDTO());
         }
 
-        public Task<GetContactMessageDTO?> GetMessageByIdAsync(int id)
+        public async Task<GetContactMessageDTO?> GetMessageByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var message = await context.ContactMessages.FindAsync(id);
+
+            if (message == null) 
+            {
+                return null;
+            }
+
+            return message.ToGetContactMessageDTO();
         }
 
         public Task<GetContactMessageDTO?> ToggleIsReadAsync(int id)
