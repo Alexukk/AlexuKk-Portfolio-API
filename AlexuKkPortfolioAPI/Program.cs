@@ -18,6 +18,7 @@ builder.Services.AddDbContext<AppDBContext>(options =>
 );
 
 builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IContactMessageService, ContactMessageService>();
 
 var app = builder.Build();
 

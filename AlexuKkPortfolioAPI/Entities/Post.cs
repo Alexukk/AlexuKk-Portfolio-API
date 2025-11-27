@@ -1,4 +1,4 @@
-﻿namespace AlexuKkPortfolioAPI.Enities
+﻿namespace AlexuKkPortfolioAPI.Entities
 {
     public class Post
     {

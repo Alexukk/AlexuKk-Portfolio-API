@@ -1,5 +1,5 @@
 ﻿using AlexuKkPortfolioAPI.DTOs;
-using AlexuKkPortfolioAPI.Enities;
+using AlexuKkPortfolioAPI.Entities;
 
 namespace AlexuKkPortfolioAPI.Mapping
 {

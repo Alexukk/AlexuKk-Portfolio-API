@@ -1,6 +1,6 @@
 ﻿using AlexuKkPortfolioAPI.Data;
 using AlexuKkPortfolioAPI.DTOs;
-using AlexuKkPortfolioAPI.Enities;
+using AlexuKkPortfolioAPI.Entities;
 using AlexuKkPortfolioAPI.Mapping;
 using Microsoft.EntityFrameworkCore;
 

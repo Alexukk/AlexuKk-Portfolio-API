@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AlexuKkPortfolioAPI.Services
+namespace AlexuKkPortfolioAPI.DTOs
 {
     public class UpdateStatusDTO
     {

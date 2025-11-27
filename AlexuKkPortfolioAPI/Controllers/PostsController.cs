@@ -7,7 +7,7 @@ namespace AlexuKkPortfolioAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ApiPostController(IPostService postService) : ControllerBase
+    public class PostsController(IPostService postService) : ControllerBase
     {
         [HttpGet]
         public async Task<IActionResult> GetAllPosts()
