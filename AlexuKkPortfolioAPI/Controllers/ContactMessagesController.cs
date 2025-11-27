@@ -42,5 +42,12 @@ namespace AlexuKkPortfolioAPI.Controllers
 
             return CreatedAtAction(nameof(GetMessageById), new { id = result.Id }, result);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteContactMessage(int id)
+        {
+            bool result = await contactMessageService.DeleteMessageAsync(id);
+            return NoContent();
+        }
     }
 }

@@ -17,9 +17,17 @@ namespace AlexuKkPortfolioAPI.Services
             return newContactMessage.ToGetContactMessageDTO();
         }
 
-        public Task<bool> DeleteMessageAsync(int id)
+        public async Task<bool> DeleteMessageAsync(int id)
         {
-            throw new NotImplementedException();
+            var messageToDelete = await context.ContactMessages.FindAsync(id);
+            if (messageToDelete == null) 
+            {
+                return true;
+            }
+
+            context.ContactMessages.Remove(messageToDelete);
+            await context.SaveChangesAsync();
+            return true;
         }
 
         public async Task<IEnumerable<GetContactMessageDTO>> GetAllMessagesAsync()
