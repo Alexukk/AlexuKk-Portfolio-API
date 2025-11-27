@@ -35,7 +35,7 @@ namespace AlexuKkPortfolioAPI.Data
                 TelegramUsername = "@AlexuKk",
                 Email = "alexukker@gmail.com",
                 LinkedInUrl = "link to LinkedIn",
-                DonationURL = "URL для донатов",
+                DonationURL = "buymeacoffee.com/alexukk",
 
 
             };
