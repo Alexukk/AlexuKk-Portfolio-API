@@ -19,7 +19,7 @@ namespace AlexuKkPortfolioAPI.Data
 
         }
 
-        private static AppConfigEnt GetConfigSeedData()
+        public static AppConfigEnt GetConfigSeedData()
         {
             return new AppConfigEnt
             {

@@ -1,13 +1,32 @@
 ﻿using AlexuKkPortfolioAPI.DTOs.AppConfigDTOs;
 using Microsoft.EntityFrameworkCore;
+using AlexuKkPortfolioAPI.Data;
+using AlexuKkPortfolioAPI.Mapping;
+
 
 namespace AlexuKkPortfolioAPI.Services
 {
-    public class AppConfigService(DbContext context) : IAppConfigService
+    public class AppConfigService(AppDBContext context) : IAppConfigService
     {
-        public Task<GetContactInfoDto> GetContactInfo()
+        public async Task<GetContactInfoDto> GetContactInfo()
         {
-            throw new NotImplementedException();
+            var config = await context.AppConfigurations
+        .AsNoTracking()
+        .Where(c => c.Id == 1)
+        .FirstOrDefaultAsync();
+
+
+            if (config == null)
+            {
+     
+                config = AppDBContext.GetConfigSeedData();
+
+                context.AppConfigurations.Add(config);
+                await context.SaveChangesAsync(); 
+            }
+
+            return config.ToGetContactsDTO();
+
         }
 
         public Task<GetCurrentProjDetails> GetCurrentProjDetails()
