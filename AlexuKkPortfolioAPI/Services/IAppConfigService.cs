@@ -6,14 +6,14 @@ namespace AlexuKkPortfolioAPI.Services
     public interface IAppConfigService
     {
         Task<GetGitHubDTO> GetGitHubDetails();
-        Task<PatchGitHubDTO> PatchGitHubDetails(PatchGitHubDTO dto);
-        Task<GetFlashDetailsDTO> GetFlashDetails();
-        Task<PatchFlashDetailsDTO> PatchFlashDetails(PatchFlashDetailsDTO dto);
+        Task<GetGitHubDTO?> PatchGitHubDetails(PatchGitHubDTO dto);
+        Task<ToGetFlashDetailsDTO> GetFlashDetails();
+        Task<ToGetFlashDetailsDTO?> PatchFlashDetails(PatchFlashDetailsDTO dto);
         Task<GetCurrentProjDetailsDTO> GetCurrentProjDetails();
-        Task<PatchCurrentProjDetailsDTO> PatchCurrentProjDetails(PatchCurrentProjDetailsDTO dto);
+        Task<GetCurrentProjDetailsDTO?> PatchCurrentProjDetails(PatchCurrentProjDetailsDTO dto);
         Task<GetContactInfoDto> GetContactInfo();
-        Task<PatchContactInfoDTO> PatchContactInfo(PatchContactInfoDTO dto);
+        Task<GetContactInfoDto?> PatchContactInfo(PatchContactInfoDTO dto);
         Task<GetDonationInfoDTO> GetDonationInfo();
-        Task<PatchDonationInfoDTO> PatchDonationinfo(PatchDonationInfoDTO dto);
+        Task<GetDonationInfoDTO?> PatchDonationinfo(PatchDonationInfoDTO dto);
     }
 }

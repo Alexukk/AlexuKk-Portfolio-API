@@ -35,9 +35,9 @@ namespace AlexuKkPortfolioAPI.Mapping
             };
         }
 
-        public static GetFlashDetailsDTO GetFlashDetailsDTO(this AppConfigEnt ent) 
+        public static ToGetFlashDetailsDTO GetFlashDetailsDTO(this AppConfigEnt ent) 
         {
-            return new GetFlashDetailsDTO
+            return new ToGetFlashDetailsDTO
             {
                 FlashTitle = ent.FlashTitle,
                 FlashContent = ent.FlashContent
