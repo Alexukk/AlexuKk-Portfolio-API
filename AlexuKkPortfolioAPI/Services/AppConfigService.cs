@@ -25,19 +25,25 @@ namespace AlexuKkPortfolioAPI.Services
             
         }
 
-        public Task<GetDonationInfoDTO> GetDonationInfo()
+        public async Task<GetDonationInfoDTO> GetDonationInfo()
         {
-            throw new NotImplementedException();
+            var config = await GetEntity();
+
+            return config.ToGetDonationsDTO();
         }
 
-        public Task<GetFlashDetailsDTO> GetFlashDetails()
+        public async Task<GetFlashDetailsDTO> GetFlashDetails()
         {
-            throw new NotImplementedException();
+            var config = await GetEntity();
+
+            return config.GetFlashDetailsDTO();
         }
 
-        public Task<GetGitHubDTO> GetGitHubDetails()
+        public async Task<GetGitHubDTO> GetGitHubDetails()
         {
-            throw new NotImplementedException();
+            var config = await GetEntity();
+
+            return config.ToGetGitHubDTO();
         }
 
         public Task<PatchContactInfoDTO> PatchContactInfo(PatchContactInfoDTO dto)

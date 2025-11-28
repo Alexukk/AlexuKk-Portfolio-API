@@ -27,6 +27,31 @@ namespace AlexuKkPortfolioAPI.Mapping
 
             };
         }
+        public static GetDonationInfoDTO ToGetDonationsDTO(this AppConfigEnt ent) 
+        {
+            return new GetDonationInfoDTO
+            {
+                DonationURL = ent.DonationURL
+            };
+        }
+
+        public static GetFlashDetailsDTO GetFlashDetailsDTO(this AppConfigEnt ent) 
+        {
+            return new GetFlashDetailsDTO
+            {
+                FlashTitle = ent.FlashTitle,
+                FlashContent = ent.FlashContent
+            };
+        }
+
+        public static GetGitHubDTO ToGetGitHubDTO(this AppConfigEnt ent)
+        {
+            return new GetGitHubDTO
+            {
+                GitHubUseraname = ent.GitHubUseraname,
+                GitHubURL = ent.GitHubURL,
+            };
+        }
 
     }
 }
