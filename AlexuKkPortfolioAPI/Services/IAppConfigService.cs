@@ -9,7 +9,7 @@ namespace AlexuKkPortfolioAPI.Services
         Task<PatchGitHubDTO> PatchGitHubDetails(PatchGitHubDTO dto);
         Task<GetFlashDetailsDTO> GetFlashDetails();
         Task<PatchFlashDetailsDTO> PatchFlashDetails(PatchFlashDetailsDTO dto);
-        Task<GetCurrentProjDetails> GetCurrentProjDetails();
+        Task<GetCurrentProjDetailsDTO> GetCurrentProjDetails();
         Task<PatchCurrentProjDetailsDTO> PatchCurrentProjDetails(PatchCurrentProjDetailsDTO dto);
         Task<GetContactInfoDto> GetContactInfo();
         Task<PatchContactInfoDTO> PatchContactInfo(PatchContactInfoDTO dto);

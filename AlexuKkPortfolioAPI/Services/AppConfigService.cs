@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using AlexuKkPortfolioAPI.Data;
 using AlexuKkPortfolioAPI.Mapping;
+using AlexuKkPortfolioAPI.Entities;
 
 
 namespace AlexuKkPortfolioAPI.Services
@@ -10,28 +11,18 @@ namespace AlexuKkPortfolioAPI.Services
     {
         public async Task<GetContactInfoDto> GetContactInfo()
         {
-            var config = await context.AppConfigurations
-        .AsNoTracking()
-        .Where(c => c.Id == 1)
-        .FirstOrDefaultAsync();
-
-
-            if (config == null)
-            {
-     
-                config = AppDBContext.GetConfigSeedData();
-
-                context.AppConfigurations.Add(config);
-                await context.SaveChangesAsync(); 
-            }
+            var config = await GetEntity();
 
             return config.ToGetContactsDTO();
 
         }
 
-        public Task<GetCurrentProjDetails> GetCurrentProjDetails()
+        public async Task<GetCurrentProjDetailsDTO> GetCurrentProjDetails()
         {
-            throw new NotImplementedException();
+            var config = await GetEntity();
+
+            return config.ToGetCurrentProjDTO();
+            
         }
 
         public Task<GetDonationInfoDTO> GetDonationInfo()
@@ -73,5 +64,28 @@ namespace AlexuKkPortfolioAPI.Services
         {
             throw new NotImplementedException();
         }
+
+        private async Task<AppConfigEnt> GetEntity()
+        {
+
+            var config = await context.AppConfigurations
+                .AsNoTracking()
+                .Where(c => c.Id == 1)
+                .FirstOrDefaultAsync();
+
+
+            if (config == null)
+            {
+
+                config = AppDBContext.GetConfigSeedData();
+
+                context.AppConfigurations.Add(config);
+                await context.SaveChangesAsync();
+            }
+
+            return config;
+
+        }
     }
+    
 }

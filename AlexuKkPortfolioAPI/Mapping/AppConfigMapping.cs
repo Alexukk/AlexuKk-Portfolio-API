@@ -16,5 +16,17 @@ namespace AlexuKkPortfolioAPI.Mapping
                 LinkedInUrl = ent.LinkedInUrl,
             };
         }
+
+        public static GetCurrentProjDetailsDTO ToGetCurrentProjDTO(this AppConfigEnt ent)
+        {
+            return new GetCurrentProjDetailsDTO
+            {
+                ProjTitle = ent.ProjTitle,
+                ProjContent = ent.ProjContent,
+                ProjURL = ent.ProjURL
+
+            };
+        }
+
     }
 }

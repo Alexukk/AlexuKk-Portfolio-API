@@ -1,6 +1,6 @@
 ﻿namespace AlexuKkPortfolioAPI.DTOs.AppConfigDTOs
 {
-    public class GetCurrentProjDetails
+    public class GetCurrentProjDetailsDTO
     {
         public string ProjTitle { get; set; }
         public string ProjContent { get; set; }
