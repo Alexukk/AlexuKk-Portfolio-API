@@ -16,7 +16,7 @@ namespace AlexuKkPortfolioAPI.Controllers
             var result = await AppConfigService.PatchGitHubDetails(dto);
             if (result == null)
             {
-                return BadRequest("There are no fields provided");
+                return NoContent();
             }
             return Ok(result);
         }
@@ -27,7 +27,7 @@ namespace AlexuKkPortfolioAPI.Controllers
             var result = await AppConfigService.PatchContactInfo(dto);
             if (result == null)
             {
-                return BadRequest("There are no fields provided");
+                return NoContent();
             }
             return Ok(result);
         }
@@ -38,7 +38,7 @@ namespace AlexuKkPortfolioAPI.Controllers
             var result = await AppConfigService.PatchDonationinfo(dto);
             if (result == null)
             {
-                return BadRequest("There are no fields provided");
+                return NoContent();
             }
             return Ok(result);
         }
@@ -49,7 +49,7 @@ namespace AlexuKkPortfolioAPI.Controllers
             var result = await AppConfigService.PatchFlashDetails(dto);
             if (result == null)
             {
-                return BadRequest("There are no fields provided");
+                return NotFound();
             }
             return Ok(result);
         }
@@ -60,7 +60,7 @@ namespace AlexuKkPortfolioAPI.Controllers
             var result = await AppConfigService.PatchCurrentProjDetails(dto);
             if (result == null)
             {
-                return BadRequest("There are no fields provided");
+                return NoContent();
             }
             return Ok(result);
         }
