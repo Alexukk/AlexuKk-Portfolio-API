@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using AlexuKkPortfolioAPI.DTOs;
-using AlexuKkPortfolioAPI.Services;
-using AlexuKkPortfolioAPI.DTOs.AppConfigDTOs;
 
 namespace AlexuKkPortfolioAPI.Controllers
 {
